@@ -3,7 +3,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { hexRgb } from "../../utils/helpers";
 import { DARK } from "../../theme";
 import { MI } from "../MI";
-import getInTouchVideo from "../../assets/Videos/getInTouch.gif";
+import getInTouchVideo from "../../assets/Images/getInTouch.gif";
 
 export function Contact({ c }: { c: typeof DARK }) {
   const isMobile = useMediaQuery("(max-width: 768px)");

@@ -2,12 +2,16 @@ import { motion } from "motion/react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { hexRgb } from "../../utils/helpers";
 import { DARK } from "../../theme";
-import { MI } from "../MI";
+
+import clinicImg from "../../assets/Images/clinicSystem.PNG";
+import schoolImg from "../../assets/Images/shoolLandingPage.PNG";
+import portfolioImg from "../../assets/Images/Portofolio.PNG";
+
 
 const PRODUCTS_DATA = [
-  { id: "01", name: "Clinic System", tag: "Healthcare Management", desc: "A comprehensive healthcare platform streamlining patient management, appointment scheduling, and automated clinical workflows for modern medical practices.", icon: "medical_services", col: "#ff6b1a", accent: "#fbbf24" },
-  { id: "02", name: "Al-Aufoq School", tag: "Educational Ecosystem", desc: "An integrated educational management system designed to empower educators and administrators with real-time student performance tracking and smart resource allocation.", icon: "school", col: "#00ffe7", accent: "#14b8a6" },
-  { id: "03", name: "Think", tag: "AI Strategy & Design", desc: "Our flagship AI-driven consulting framework that bridges the gap between architectural complexity and human-centric design for high-performance software ecosystems.", icon: "psychology", col: "#a78bfa", accent: "#8b5cf6" },
+  { id: "01", name: "Clinic System", tag: "Healthcare Management", desc: "A comprehensive healthcare platform streamlining patient management, appointment scheduling, and automated clinical workflows for modern medical practices.", icon: "medical_services", col: "#ff6b1a", accent: "#fbbf24", img: clinicImg, links: { live: "https://tareq-orabi.github.io/Six-Senses-clinic/" } },
+  { id: "02", name: "Al-Aufoq School", tag: "Educational Ecosystem", desc: "An integrated educational management system designed to empower educators and administrators with real-time student performance tracking and smart resource allocation.", icon: "school", col: "#00ffe7", accent: "#14b8a6", img: schoolImg, links: { live: "https://www.alufoqschool.com/" } },
+  { id: "03", name: "Think", tag: "AI Strategy & Design", desc: "Our flagship AI-driven consulting framework that bridges the gap between architectural complexity and human-centric design for high-performance software ecosystems.", icon: "psychology", col: "#a78bfa", accent: "#8b5cf6", img: portfolioImg, links: { live: "https://mazen-portofolio-nine.vercel.app/" } },
 ];
 
 function ProductCard({ product: p, index: i, c, isMobile }: any) {
@@ -87,24 +91,56 @@ function ProductCard({ product: p, index: i, c, isMobile }: any) {
             <h3 style={{ fontFamily: "'Bebas Neue'", fontSize: isMobile ? 42 : 64, color: isDark ? "#fff" : "#0a0e1a", lineHeight: 0.9, marginBottom: 20 }}>{p.name}</h3>
             <p style={{ fontFamily: "'DM Sans'", fontSize: isMobile ? 14 : 16, color: isDark ? "#999" : "#555", lineHeight: 1.7, marginBottom: "auto" }}>{p.desc}</p>
             <div style={{ display: "flex", gap: 12, marginTop: 32, flexDirection: isMobile ? "column" : "row" }}>
-              <button style={{ background: isDark ? "#fff" : "#0a0e1a", color: isDark ? "#000" : "#fff", fontWeight: 700, padding: "14px 28px", border: "none", borderRadius: 4, cursor: "pointer", fontFamily: "'DM Mono'", fontSize: 11 }}>VIEW PROJECT</button>
-              <button style={{ background: "rgba(255,255,255,0.05)", color: isDark ? "#fff" : "#0a0e1a", padding: "14px 28px", border: `1px solid ${c.border}`, borderRadius: 4, cursor: "pointer", fontFamily: "'DM Mono'", fontSize: 11 }}>DOCS</button>
+              <a 
+                href={p.links.live} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ 
+                  background: isDark ? "#fff" : "#0a0e1a", 
+                  color: isDark ? "#000" : "#fff", 
+                  fontWeight: 700, 
+                  padding: "14px 28px", 
+                  borderRadius: 4, 
+                  textDecoration: "none",
+                  fontFamily: "'DM Mono'", 
+                  fontSize: 11,
+                  textAlign: "center",
+                  display: "inline-block"
+                }}
+              >
+                VIEW PROJECT
+              </a>
             </div>
           </div>
 
           {!isMobile && (
-            <div style={{ position: "relative", background: isDark ? "#0c0c0c" : "#f8f8ff", display: "flex", alignItems: "center", justifyContent: "center", borderLeft: `1px solid ${c.border}` }}>
+            <div style={{ position: "relative", background: isDark ? "#0c0c0c" : "#f8f8ff", display: "flex", alignItems: "center", justifyContent: "center", borderLeft: `1px solid ${c.border}`, overflow: "hidden" }}>
               <div style={{ position: "absolute", inset: 0, opacity: 0.15, backgroundImage: `radial-gradient(${p.col} 1px,transparent 1px)`, backgroundSize: "30px 30px" }} />
+
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                style={{ position: "relative", zIndex: 2 }}
+                initial={{ scale: 1.2, opacity: 0, rotate: i % 2 === 0 ? 5 : -5 }}
+                whileInView={{ scale: 1, opacity: 1, rotate: i % 2 === 0 ? -2 : 2 }}
+                whileHover={{ scale: 1.05, rotate: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  position: "relative",
+                  zIndex: 2,
+                  width: "85%",
+                  height: "70%",
+                  borderRadius: 12,
+                  overflow: "hidden",
+                  boxShadow: `0 30px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05)`,
+                  border: `1px solid ${c.border}`
+                }}
               >
-                <MI n={p.icon} style={{ color: p.col, fontSize: 120, filter: `drop-shadow(0 0 30px ${p.col}44)` }} fill />
+                <img src={p.img} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(45deg, ${p.col}22, transparent)` }} />
               </motion.div>
+
               <div style={{ position: "absolute", bottom: -10, right: 10, fontFamily: "'Bebas Neue'", fontSize: 160, color: isDark ? "#fff" : "#000", opacity: 0.02, pointerEvents: "none" }}>{p.id}</div>
             </div>
           )}
+
         </div>
       </motion.div>
     </div>

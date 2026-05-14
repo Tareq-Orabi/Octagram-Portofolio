@@ -4,13 +4,48 @@ import { DARK } from "../../theme";
 import { MI } from "../MI";
 
 export const SERVICES_DATA = [
-  { id: "S1", label: "Custom Software", icon: "code", desc: "Tailored software solutions engineered for performance, scalability, and long-term business growth.", col: "#ff6b1a" },
-  { id: "S2", label: "AI & Automation", icon: "smart_toy", desc: "Integrating intelligent agents and machine learning workflows to optimize complex business processes.", col: "#00ffe7" },
-  { id: "S3", label: "UI/UX Design", icon: "brush", desc: "Crafting intuitive, high-performance interfaces with a focus on user engagement and modern aesthetics.", col: "#fbbf24" },
-  { id: "S4", label: "Cloud & DevOps", icon: "cloud_done", desc: "Seamless cloud migrations and automated infrastructure management for zero-downtime operations.", col: "#a78bfa" },
-  { id: "S5", label: "Data Analytics", icon: "bar_chart", desc: "Transforming raw data into actionable insights through advanced ETL pipelines and real-time dashboards.", col: "#34d399" },
-  { id: "S6", label: "Cybersecurity", icon: "enhanced_encryption", desc: "End-to-end security audits, zero-trust architecture, and continuous threat monitoring for your digital assets.", col: "#f43f5e" },
-
+  {
+    id: "S1",
+    label: "Web Development",
+    icon: "code",
+    desc: "Custom websites and scalable web platforms built with modern technologies, optimized for performance, security, and business growth.",
+    col: "#ff6b1a"
+  },
+  {
+    id: "S2",
+    label: "AI & Automation",
+    icon: "smart_toy",
+    desc: "AI-powered systems and smart automation solutions designed to streamline workflows, reduce manual tasks, and improve efficiency.",
+    col: "#00ffe7"
+  },
+  {
+    id: "S3",
+    label: "UI/UX Design",
+    icon: "brush",
+    desc: "Modern and user-focused interfaces crafted to deliver seamless experiences, strong engagement, and visually impactful design.",
+    col: "#fbbf24"
+  },
+  {
+    id: "S4",
+    label: "IT Solutions",
+    icon: "cloud_done",
+    desc: "Reliable IT infrastructure, cloud integration, and technical solutions tailored to support secure and scalable business operations.",
+    col: "#a78bfa"
+  },
+  {
+    id: "S5",
+    label: "App Development",
+    icon: "bar_chart",
+    desc: "High-performance mobile and desktop applications developed with clean architecture, smooth functionality, and modern user experiences.",
+    col: "#34d399"
+  },
+  {
+    id: "S6",
+    label: "Digital Marketing",
+    icon: "enhanced_encryption",
+    desc: "Strategic digital marketing campaigns focused on brand growth, audience engagement, and measurable business results.",
+    col: "#f43f5e"
+  },
 ];
 
 export function HexCell({ service, posX, posY, isCenter, c, isLight, onHover }: {

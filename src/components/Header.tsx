@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { hexRgb } from "../utils/helpers";
 import OctagramLogo from "../assets/Images/OctagramLogo.png";
-import cyperCity from "../assets/Videos/cyperCity2Gif.gif";
+import cyperCity from "../assets/Images/cyperCity2Gif.gif";
 import type { Theme } from "../theme";
 import { DARK } from "../theme";
 

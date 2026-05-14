@@ -15,10 +15,10 @@ const ABOUT_LINES = [
 ];
 
 const ABOUT_STATS = [
-  { val: "06", label: "Core Members" },
-  { val: "10+", label: "Projects Done" },
-  { val: "05+", label: "Products" },
-  { val: "02+", label: "Years Exp" },
+  { val: "6", label: "Team Members" },
+  { val: "4+", label: "Projects Done" },
+  { val: "5+", label: "Products" },
+  { val: "1+", label: "Years Exp" },
 ];
 
 export function AboutSection({ c }: { c: typeof DARK }) {
