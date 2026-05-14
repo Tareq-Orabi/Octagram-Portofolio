@@ -7,48 +7,51 @@ import * as THREE from 'three'
 //  SPIN WHEEL DATA  (7 segments)
 // ─────────────────────────────────────────────
 const SEGMENTS = [
-    { label: '🎁 Prize!', color: '#ff6b1a' },
-    { label: '💀 Lose', color: '#1e293b' },
-    { label: '⭐ Bonus', color: '#f59e0b' },
-    { label: '🔄 Retry', color: '#3b82f6' },
-    { label: '🎉 Jackpot', color: '#10b981' },
-    { label: '😂 Funny', color: '#8b5cf6' },
-    { label: '🤑 Double', color: '#ef4444' },
-]
+    { label: '🎟️ Voucher', color: '#ff6b1a' },
+    { label: '❌ Lose', color: '#1e293b' },
+    { label: '⚠️ Lose', color: '#f59e0b' },
+    { label: '🔁 Lose', color: '#3b82f6' },
+    { label: '📘 Octagram Book', color: '#10b981' },
+    { label: '🎫 Voucher', color: '#8b5cf6' },
+];
 
 // ─────────────────────────────────────────────
 //  QUIZ DATA  (4 categories × 5 questions)
 // ─────────────────────────────────────────────
 const QUIZ_DATA = {
-    '🌍 Geography': [
-        { q: 'What is the capital of Australia?', opts: ['Sydney', 'Melbourne', 'Canberra', 'Perth'], a: 2 },
-        { q: 'Which country has the most natural lakes?', opts: ['Russia', 'Canada', 'Brazil', 'USA'], a: 1 },
-        { q: 'What is the longest river in the world?', opts: ['Amazon', 'Yangtze', 'Mississippi', 'Nile'], a: 3 },
-        { q: 'Which continent has no countries?', opts: ['Arctic', 'Antarctica', 'Greenland', 'Iceland'], a: 1 },
-        { q: 'What is the smallest country in the world?', opts: ['Monaco', 'Liechtenstein', 'Vatican City', 'San Marino'], a: 2 },
+    '💻 تكنولوجيا المعلومات': [
+        { q: 'ماذا يعني اختصار CPU؟', opts: ['وحدة المعالجة المركزية الفرعية', 'وحدة المعالجة المركزية', 'وحدة الحاسوب الشخصي', 'وحدة المعالج العام'], a: 1 },
+        { q: 'ما هي اللغة المستخدمة بشكل أساسي لتنسيق صفحات الويب؟', opts: ['HTML', 'Python', 'CSS', 'Java'], a: 2 },
+        { q: 'ماذا يعني اختصار RAM؟', opts: ['ذاكرة الوصول العشوائي', 'ذاكرة القراءة فقط', 'وحدة الوصول السريع', 'ذاكرة التشغيل'], a: 0 },
+        { q: 'ما هي الشركة التي طورت نظام التشغيل Windows؟', opts: ['آبل', 'جوجل', 'مايكروسوفت', 'آي بي إم'], a: 2 },
+        { q: 'ماذا يعني اختصار HTTP؟', opts: ['بروتوكول نقل النص التشعبي', 'بروتوكول النقل العالي', 'برنامج نقل النصوص', 'بروتوكول الشبكة المنزلية'], a: 0 },
     ],
-    '🔬 Science': [
-        { q: 'What planet is known as the Red Planet?', opts: ['Venus', 'Mars', 'Jupiter', 'Saturn'], a: 1 },
-        { q: 'What is the chemical symbol for gold?', opts: ['Go', 'Gd', 'Au', 'Ag'], a: 2 },
-        { q: 'How many bones are in the adult human body?', opts: ['196', '206', '216', '226'], a: 1 },
-        { q: 'What gas do plants absorb from the atmosphere?', opts: ['Oxygen', 'Nitrogen', 'CO₂', 'Hydrogen'], a: 2 },
-        { q: 'What is the speed of light (km/s)?', opts: ['200,000', '250,000', '300,000', '350,000'], a: 2 },
+
+    '🌱 علوم البيئة': [
+        { q: 'ما الغاز الذي تمتصه النباتات من الغلاف الجوي؟', opts: ['الأكسجين', 'النيتروجين', 'ثاني أكسيد الكربون', 'الهيدروجين'], a: 2 },
+        { q: 'أي من مصادر الطاقة المتجددة التالية يستخدم ضوء الشمس؟', opts: ['طاقة الرياح', 'الطاقة الشمسية', 'الطاقة المائية', 'الفحم'], a: 1 },
+        { q: 'ما هو المفهوم الصحيح لإعادة التدوير؟', opts: ['حرق النفايات', 'إعادة استخدام المواد', 'رمي القمامة', 'قطع الأشجار'], a: 1 },
+        { q: 'ما هي الطبقة التي تحمي الأرض من الأشعة فوق البنفسجية؟', opts: ['الغلاف الجوي', 'طبقة الأوزون', 'طبقة السحب', 'الغلاف المائي'], a: 1 },
+        { q: 'ما هو السبب الرئيسي للاحتباس الحراري؟', opts: ['الغازات الدفيئة', 'الأمطار', 'ضوء القمر', 'الثلوج'], a: 0 },
     ],
-    '🎬 Movies': [
-        { q: 'Who directed "Inception" (2010)?', opts: ['Ridley Scott', 'James Cameron', 'Christopher Nolan', 'Denis Villeneuve'], a: 2 },
-        { q: 'Which film won the first ever Academy Award for Best Picture?', opts: ['Wings', 'Sunrise', 'The Jazz Singer', 'Ben-Hur'], a: 0 },
-        { q: '"To infinity and beyond!" is from which movie?', opts: ['Toy Story', 'A Bug\'s Life', 'Shrek', 'Antz'], a: 0 },
-        { q: 'Who played Iron Man in the MCU?', opts: ['Chris Evans', 'Robert Downey Jr.', 'Chris Hemsworth', 'Mark Ruffalo'], a: 1 },
-        { q: 'Which movie features the song "Let It Go"?', opts: ['Brave', 'Moana', 'Tangled', 'Frozen'], a: 3 },
+
+    '🩺 الطب والصحة': [
+        { q: 'كم عدد حجرات قلب الإنسان الطبيعي؟', opts: ['حجرتان', 'ثلاث حجرات', 'أربع حجرات', 'خمس حجرات'], a: 2 },
+        { q: 'ما هو الفيتامين الذي ينتجه الجسم عند التعرض لأشعة الشمس؟', opts: ['فيتامين أ', 'فيتامين ب', 'فيتامين سي', 'فيتامين د'], a: 3 },
+        { q: 'ما هو العضو الذي يضخ الدم إلى جميع أنحاء الجسم؟', opts: ['الرئتان', 'الدماغ', 'القلب', 'الكبد'], a: 2 },
+        { q: 'ما هي درجة حرارة جسم الإنسان الطبيعية؟', opts: ['35 درجة مئوية', '37 درجة مئوية', '39 درجة مئوية', '40 درجة مئوية'], a: 1 },
+        { q: 'ما هي فصيلة الدم المعروفة بالمانح العام (المعطي العام)؟', opts: ['A', 'B', 'AB', 'O'], a: 3 },
     ],
-    '⚽ Sports': [
-        { q: 'How many players are on a standard football (soccer) team?', opts: ['9', '10', '11', '12'], a: 2 },
-        { q: 'In which country did the Olympic Games originate?', opts: ['Italy', 'Rome', 'Egypt', 'Greece'], a: 3 },
-        { q: 'How many Grand Slam tournaments are in tennis?', opts: ['2', '3', '4', '5'], a: 2 },
-        { q: 'What sport is played at Wimbledon?', opts: ['Cricket', 'Badminton', 'Tennis', 'Squash'], a: 2 },
-        { q: 'Which country won the 2022 FIFA World Cup?', opts: ['France', 'Brazil', 'Argentina', 'Portugal'], a: 2 },
+
+    '🔬 العلوم العامة': [
+        { q: 'ما الكوكب المعروف باسم الكوكب الأحمر؟', opts: ['الزهرة', 'المريخ', 'المشتري', 'زحل'], a: 1 },
+        { q: 'ما هو الاسم الشائع للمركب الكيميائي H₂O؟', opts: ['الملح', 'الماء', 'الهيدروجين', 'الأكسجين'], a: 1 },
+        { q: 'ما هي القوة التي تبقينا على سطح الأرض؟', opts: ['المغناطيسية', 'الكهرباء', 'الجاذبية الأرضية', 'الضغط'], a: 2 },
+        { q: 'ماذا يسمى مركز الذرة؟', opts: ['الإلكترون', 'النيوترون', 'النواة', 'البروتون'], a: 2 },
+        { q: 'ما هو أكبر كوكب في النظام الشمسي؟', opts: ['الأرض', 'المريخ', 'المشتري', 'الزهرة'], a: 2 },
     ],
-}
+
+};
 
 // ─────────────────────────────────────────────
 //  SVG SPIN WHEEL
