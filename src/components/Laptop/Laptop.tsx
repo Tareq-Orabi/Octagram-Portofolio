@@ -1,11 +1,11 @@
-import React, { Suspense, useState } from 'react'
+import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, ContactShadows } from '@react-three/drei'
 import LaptopModel from './LaptopModel.tsx'
 
 
 export const LaptopSection = ({ c }: { c: any }) => {
-  const [isMaximized, setIsMaximized] = useState(false)
+  const isMaximized = false
   return (
     <div
       className={`relative ${isMaximized ? 'h-[1000px]' : 'h-screen'} w-full flex items-center justify-center`}

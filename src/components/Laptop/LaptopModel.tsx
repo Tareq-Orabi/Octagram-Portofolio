@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { Html, Float, PresentationControls } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -56,7 +56,7 @@ const QUIZ_DATA = {
 // ─────────────────────────────────────────────
 //  SVG SPIN WHEEL
 // ─────────────────────────────────────────────
-const SpinWheel = ({ rotation }: { rotation: number }) => {
+const SpinWheel = ({ rotation: _rotation }: { rotation?: number }) => {
     const cx = 150, cy = 150, r = 140
     const n = SEGMENTS.length
     const sliceAngle = (2 * Math.PI) / n
@@ -375,7 +375,7 @@ const ScreenContent = ({ isMaximized, onFullscreen }: { isMaximized: boolean; on
 // ─────────────────────────────────────────────
 //  LAPTOP MODEL  (main export)
 // ─────────────────────────────────────────────
-const LaptopModel = ({ c }: { c: any }) => {
+const LaptopModel = ({ c: _c }: { c: any }) => {
     const [isMaximized, setIsMaximized] = useState(false)
     const groupRef = useRef<THREE.Group>(null)
     const { camera } = useThree()

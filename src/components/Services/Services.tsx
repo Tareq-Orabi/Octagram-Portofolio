@@ -213,7 +213,7 @@ export function ServicesMachine({ c }: { c: typeof DARK }) {
               })}
             </svg>
 
-            {mappedServices.map((s, i) => (
+            {mappedServices.map((s, _i) => (
               <HexCell key={s.id} service={s} posX={s.pos.cx} posY={s.pos.cy} isCenter={s.isCenter} c={c} isLight={isLight} onHover={setActiveSvc} />
             ))}
           </div>

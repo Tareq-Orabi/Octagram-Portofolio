@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useScroll } from "motion/react";
+import { motion, useScroll } from "motion/react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { hexRgb } from "../../utils/helpers";
 import { DARK } from "../../theme";

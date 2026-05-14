@@ -48,7 +48,7 @@ export const SERVICES_DATA = [
   },
 ];
 
-export function HexCell({ service, posX, posY, isCenter, c, isLight, onHover }: {
+export function HexCell({ service, posX, posY, isCenter, c: _c, isLight, onHover }: {
   service: typeof SERVICES_DATA[0]; posX: number; posY: number; isCenter: boolean; c: typeof DARK; isLight: boolean; onHover: (s: typeof SERVICES_DATA[0]) => void;
 }) {
   const [hovered, setHovered] = useState(false);
